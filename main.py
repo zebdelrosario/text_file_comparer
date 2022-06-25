@@ -8,12 +8,33 @@ def main():
     """Main code block."""
     FILE_ONE = "file1.txt"
     FILE_TWO = "file2.txt"
-    # test_get_lines(FILE_ONE, "FILE_ONE")
-    # test_get_lines(FILE_TWO, "FILE_TWO")
     lines_one = get_lines(FILE_ONE)
     lines_two = get_lines(FILE_TWO)
-    # compare_lines(lines_one, lines_two)
-    test_compare_lines(lines_one, lines_two)
+    dict = compare_lines(lines_one, lines_two)
+    # test_compare_lines(lines_one, lines_two)
+    display_values(dict, "list_one_unique", "list_two_unique", "identical_values")
+
+
+def display_values(dict, unique_key1, unique_key2, identical_key):
+    """Display the values of provided keys neatly."""
+    print(f"""
+    ====UNIQUE VALUES====
+
+    LIST ONE
+    ->\t{[item for item in dict[unique_key1]]}
+
+    LIST TWO
+    ->\t{[item for item in dict[unique_key2]]}
+
+    {"=" * 21}
+
+    ====IDENTICAL VALUES====
+
+    ->\t{[item for item in dict[identical_key]]}
+
+    {"=" * 21}
+    """)
+
 
 def test_get_lines(file_path, file_name):
     """Test the function"""
